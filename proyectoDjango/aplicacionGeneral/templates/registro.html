@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block title %} Registro de usuario {% endblock %}
+
+{% block body %}
+
+    <h1>
+        Registro de Usuario
+    </h1>
+
+    <form action="" method="POST">
+            {% csrf_token %}
+            {{formularioCreacion.as_p}}
+            <button class="btn btn-primary" type="submit" > REGISTRAR </button>
+    </form>
+
+    <br>
+            Si ya tienes una cuenta puedes acceder.... <a href="{% url 'login'%}">Ingresar</a>
+    </br>
+
+    <br>
+            Si quieres regresar al inicio... <a href="{% url 'inicio'%}">Pincha aquí</a>
+    </br>
+
+{% endblock %}

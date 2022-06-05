@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ingresar</title>
+    </head>
+    <body>
+        <h1>Acceso de Usuario</h1>
+            <form method="POST">
+                <table>
+                    {{formaPersona}}
+                </table>
+                <button type="submit">Ingresar</button>
+                {% csrf_token %}
+            </form>
+            <a href="{% url 'inicio'%}">Regresar al inicio</a>
+    </body>
+</html>

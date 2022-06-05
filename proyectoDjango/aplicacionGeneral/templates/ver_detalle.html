@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1> Gestiones Internacionales en España </h1>
+            <h2> Este es el detalle de su pedido {{pedido_id}} </h2>
+            <div class="table-responsive py-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Servicio</th>
+                            <th>Cantidad</th>
+                            <th>Precio Servicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Se muestran en la página todos los servicios del pedido-->
+                        {% for variableServiciosPedido in lista_servicios_pedido %}
+                            <tr>
+                                <td>{{variableServiciosPedido.servicio}}</td>
+                                <td>{{variableServiciosPedido.cantidad}}</td>
+                                <td>{{variableServiciosPedido.precio_serv}}</td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br>
+            Si quieres regresar al inicio... <a href="{% url 'inicio'%}">Pincha aquí</a>
+    </br>
+{% endblock %}

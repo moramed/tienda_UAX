@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+    <h1>
+        Ingresar Usuario
+    </h1>
+
+    <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary" type="submit" >ENTRAR</button>
+
+    </form>
+
+    {% if form.errors %}
+        <p class="error"> Error, ha ingresado un usuario o contraseña incorrectos </p>
+    {% endif %}
+
+    <br>
+            Si aún no tienes una cuenta... <a href="{% url 'registro'%}">Regístrate</a>
+    </br>
+
+    <br>
+            Si quieres regresar al inicio... <a href="{% url 'inicio'%}">Pincha aquí</a>
+    </br>
+
+{% endblock %}

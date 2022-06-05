@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1> Gestiones Internacionales en España </h1>
+            <h2> Esta es la lista de sus pedidos </h2>
+            <div class="table-responsive py-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID_Pedido</th>
+                            <th>Precio Total (€)</th>
+                            <th>Dirección</th>
+                            <th>Teléfono</th>
+                            <th>Fecha Compra</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Se muestran en la página todos los pedidos del cliente conectado-->
+                        {% for variablePedidos in lista_pedidos_cliente %}
+                            <tr>
+                                <td>{{variablePedidos.id}}</td>
+                                <td>{{variablePedidos.precio_total}}</td>
+                                <td>{{variablePedidos.direccion}}</td>
+                                <td>{{variablePedidos.telefono}}</td>
+                                <td>{{variablePedidos.fecha}}</td>
+                                <td>{{variablePedidos.estado_orden}}</td>
+                                <td>
+                                    <a href="{% url 'ver_detalle' variablePedidos.id %}" class="btn btn-primary">Ver Detalle del pedido {{ variablePedidos.id }}</a>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br>
+            Si quieres regresar al inicio... <a href="{% url 'inicio'%}">Pincha aquí</a>
+    </br>
+{% endblock %}

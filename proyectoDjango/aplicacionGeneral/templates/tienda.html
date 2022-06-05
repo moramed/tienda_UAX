@@ -1,0 +1,45 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <h1> Gestiones Internacionales en España </h1>
+            <div class="table-responsive py-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Servicio</th>
+                            <th>Detalle</th>
+                            <th>Precio(€)</th>
+                            <!--<th>Agregrar al carrito</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Se muestran en la página todos los servicios de la tabla -->
+                        {% for variableServicio in todos_servicios_var %}
+                            <tr>
+                                <td>{{variableServicio.id}}</td>
+                                <td>{{variableServicio.servicio}}</td>
+                                <td>{{variableServicio.detalle}}</td>
+                                <td>{{variableServicio.precio}}</td>
+                                <td>
+                                    <a href="{% url 'agregar' variableServicio.id %}" class="btn btn-primary">Agregar al carrito</a>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                {% include "carrito.html" %}
+        </div>
+
+    </div>
+{% endblock %}
